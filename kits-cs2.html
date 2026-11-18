@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kits CS2 · Noir & Forest</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Layout: coluna única mobile-first; troca de kit por abas fixas no topo; cards de arma em lista */
+:root{
+  --bg:#0d0f12; --panel:#15181d; --panel-2:#1c2027; --line:#2a2f38;
+  --fg:#e9ecf1; --muted:#8c94a3;
+  --covert:#eb4b4b; --classified:#d32ce6; --restricted:#8847ff; --milspec:#4b69ff;
+  --noir:#f2f2f2; --noir-2:#9aa0a8;
+  --forest:#9bc46b; --forest-2:#5d7a3a;
+  --accent:var(--noir);
+  --f-display:"Chakra Petch", "Rajdhani", system-ui, sans-serif;
+  --f-body:"Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--fg);font:15px/1.5 var(--f-body);-webkit-font-smoothing:antialiased}
+body[data-kit="forest"]{--accent:var(--forest)}
+a{color:inherit}
+.wrap{max-width:560px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
+
+/* Topo */
+header.top{padding-block:28px 8px}
+.eyebrow{font:600 11px/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+h1{font:700 32px/1.05 var(--f-display);margin:8px 0 6px;letter-spacing:.01em;text-wrap:balance}
+.lede{color:var(--muted);margin:0;font-size:14px}
+
+/* Abas */
+.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:12px;margin-top:12px;border-bottom:1px solid var(--line)}
+.tabs-inner{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.tab{appearance:none;border:1px solid var(--line);background:var(--panel);color:var(--fg);border-radius:10px;padding:10px 12px;text-align:left;cursor:pointer;font:inherit}
+.tab b{display:block;font:700 16px/1.2 var(--f-display);letter-spacing:.02em}
+.tab span{font-size:12px;color:var(--muted)}
+.tab[aria-selected="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.tab:focus-visible,.btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* Hero do kit */
+.kit{padding-top:20px}
+.kit-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
+.kit-head h2{font:700 26px/1.1 var(--f-display);margin:4px 0 0}
+.kit-head p{margin:6px 0 0;color:var(--muted);font-size:14px;max-width:46ch}
+.total{text-align:right}
+.total .v{font:700 26px/1 var(--f-display);color:var(--accent);font-variant-numeric:tabular-nums}
+.total .s{font-size:11px;color:var(--muted)}
+
+.combo{margin-top:16px;border-radius:14px;overflow:hidden;border:1px solid var(--line);
+  background:radial-gradient(120% 90% at 50% 0%, color-mix(in srgb,var(--accent) 22%, transparent) 0%, transparent 60%), var(--panel)}
+.combo-grid{display:grid;grid-template-columns:1fr 1fr}
+.combo-cell{padding:14px 12px 12px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.combo-cell + .combo-cell{border-left:1px solid var(--line)}
+.combo .img{aspect-ratio:4/3}
+.combo-cell .nm{font:600 15px/1.2 var(--f-display)}
+.combo-cell .meta{font-size:12px;color:var(--muted)}
+.combo-cell .pr{font:600 15px/1 var(--f-display);font-variant-numeric:tabular-nums}
+
+/* Imagens com fallback */
+.img{position:relative;width:100%;max-width:100%;display:grid;place-items:center;border-radius:10px;overflow:hidden}
+.img img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 8px 14px rgba(0,0,0,.55))}
+.img .fb{position:absolute;inset:0;display:none;place-items:center;text-align:center;padding:8px;font:600 12px/1.2 var(--f-display);color:var(--muted);
+  background:repeating-linear-gradient(135deg,var(--panel-2) 0 10px,var(--panel) 10px 20px)}
+.img.broken img{visibility:hidden}
+.img.broken .fb{display:grid}
+
+/* Lista de armas */
+.section-label{margin:26px 0 10px;display:flex;justify-content:space-between;align-items:baseline}
+.section-label h3{margin:0;font:700 13px/1 var(--f-body);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.section-label span{font-size:12px;color:var(--muted)}
+.list{display:grid;gap:10px}
+.item{display:grid;grid-template-columns:112px 1fr;gap:12px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px;position:relative;overflow:hidden}
+.item::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--rar,var(--line))}
+.item .img{aspect-ratio:4/3;background:var(--panel-2)}
+.item .body{min-width:0;display:flex;flex-direction:column;gap:3px}
+.item .row1{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.item .wp{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.item .side{font:600 10px/1 var(--f-body);letter-spacing:.06em;padding:3px 6px;border-radius:999px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+.item .nm{font:600 16px/1.2 var(--f-display)}
+.item .why{font-size:13px;color:var(--muted);line-height:1.4}
+.item .foot{margin-top:4px;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.item .pr{font:600 15px/1 var(--f-display);font-variant-numeric:tabular-nums}
+.item .pr small{font:400 11px var(--f-body);color:var(--muted);margin-left:4px}
+
+.links{display:flex;gap:6px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:4px;text-decoration:none;font:600 12px/1 var(--f-body);padding:7px 9px;border-radius:8px;border:1px solid var(--line);background:var(--panel-2);color:var(--fg)}
+.btn.primary{border-color:var(--accent);color:var(--accent)}
+
+.r-covert{--rar:var(--covert)} .r-classified{--rar:var(--classified)} .r-restricted{--rar:var(--restricted)} .r-milspec{--rar:var(--milspec)} .r-star{--rar:#e4ae39}
+
+/* Resumo e dicas */
+.summary{margin-top:22px;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.summary table{width:100%;border-collapse:collapse;font-size:13px}
+.summary td{padding:9px 12px;border-top:1px solid var(--line)}
+.summary tr:first-child td{border-top:0}
+.summary td:last-child{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.summary tr.tot td{font:700 15px var(--f-display);color:var(--accent);background:var(--panel-2)}
+
+.tips{margin-top:28px;display:grid;gap:10px}
+.tip{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.tip h4{margin:0 0 4px;font:600 15px/1.2 var(--f-display)}
+.tip p{margin:0;font-size:13px;color:var(--muted)}
+.wear{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-top:8px;font-size:11px;text-align:center}
+.wear div{background:var(--panel-2);border-radius:6px;padding:6px 2px;color:var(--muted)}
+.wear b{display:block;color:var(--fg);font:600 12px var(--f-display)}
+
+footer{margin-top:28px;font-size:12px;color:var(--muted);line-height:1.5}
+footer a{color:var(--fg)}
+
+@media (max-width:380px){.item{grid-template-columns:92px 1fr}.combo-cell .nm{font-size:14px}}
+@media (prefers-reduced-motion:no-preference){.kit{animation:in .25s ease-out}@keyframes in{from{opacity:.4;transform:translateY(6px)}to{opacity:1;transform:none}}}
+</style>
+</head>
+<body data-kit="noir">
+<div class="wrap">
+  <header class="top">
+    <div class="eyebrow">CS2 · preços de 18/11/2026</div>
+    <h1>Dois kits completos, faca + luva + armas</h1>
+    <p class="lede">Um preto e branco, outro verde de mata. Cada kit cobre as 8 peças que mais aparecem na tela: faca, luvas, AK, M4, AWP e as três pistolas.</p>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="Escolha o kit">
+    <div class="tabs-inner">
+      <button class="tab" role="tab" id="tab-noir" aria-selected="true" data-k="noir"><b>KIT NOIR</b><span>Kit 1 · ≈ R$ 3.428</span></button>
+      <button class="tab" role="tab" id="tab-forest" aria-selected="false" data-k="forest"><b>KIT FOREST</b><span>Kit 2 · ≈ R$ 3.386</span></button>
+    </div>
+  </nav>
+
+  <main id="kit"></main>
+
+  <section class="tips" aria-label="Dicas de compra">
+    <div class="section-label"><h3>Antes de comprar</h3></div>
+    <div class="tip">
+      <h4>Steam é o preço de referência, não o mais barato</h4>
+      <p>Os valores aqui são o menor anúncio no Mercado da Steam (já com a taxa de 15%). Em sites terceiros como CSFloat, DMarket, Skinport ou Buff163 o mesmo item costuma sair mais barato e dá pra pagar via Pix. O botão "CSFloat" em cada item abre a busca direto lá pra comparar.</p>
+    </div>
+    <div class="tip">
+      <h4>"Testada em Campo" é o ponto ideal</h4>
+      <p>A maioria das escolhas está em FT: o desgaste quase não aparece em primeira pessoa e o preço cai bastante. Em padrões de camuflagem, como os do Kit Forest, o desgaste praticamente some no visual.</p>
+      <div class="wear">
+        <div><b>FN</b>Nova</div><div><b>MW</b>Pouco usada</div><div><b>FT</b>Testada</div><div><b>WW</b>Bem desgastada</div><div><b>BS</b>Veterana</div>
+      </div>
+    </div>
+    <div class="tip">
+      <h4>Cuidado com golpe</h4>
+      <p>Nunca aceite troca fora da janela oficial da Steam, desconfie de "admin" pedindo pra verificar o inventário e confira o nome exato do item (StatTrak™ e Souvenir custam bem mais).</p>
+    </div>
+    <div class="tip">
+      <h4>Como ver no jogo</h4>
+      <p>As imagens são as renderizações oficiais da Steam. Para ver o item na mão do personagem, toque em "No jogo" (abre vídeos de showcase no YouTube) ou abra o anúncio na Steam e use "Inspecionar no jogo" pelo PC.</p>
+    </div>
+  </section>
+
+  <footer>
+    Preços coletados no Mercado da Steam em 18/11/2026 (faca e luvas consultadas direto em R$; armas convertidas de US$ pela taxa da própria Steam, ≈ R$ 5,73). Os preços mudam todo dia e variam com o float de cada unidade.
+  </footer>
+</div>
+
+<script>
+const IMG = id => `https://community.fastly.steamstatic.com/economy/image/${id}/360fx360f`;
+const STEAM = n => `https://steamcommunity.com/market/listings/730/${encodeURIComponent(n)}`;
+const FLOAT = n => `https://csfloat.com/search?market_hash_name=${encodeURIComponent(n)}`;
+const YT = n => `https://www.youtube.com/results?search_query=${encodeURIComponent(n.replace(/[★|()]/g,' ').replace(/\s+/g,' ').trim() + ' CS2 showcase')}`;
+const brl = v => 'R$ ' + v.toLocaleString('pt-BR',{minimumFractionDigits:0,maximumFractionDigits:0});
+const WEAR = {FN:'Nova de Fábrica',MW:'Pouco Usada',FT:'Testada em Campo'};
+
+const KITS = {
+  noir:{
+    nome:'Kit Noir', quem:'Kit 1 · Preto e branco',
+    desc:'Preto, cinza e branco do começo ao fim, com o trio Printstream na M4, USP e Deagle. Visual limpo, que combina com qualquer adesivo.',
+    faca:{wp:'Faca', nm:'Baioneta | Laminado Preto', en:'★ Bayonet | Black Laminate (Field-Tested)', w:'FT', brl:1034.35,
+      img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLzn4_v8ydP0PG7V6ZsOf-dC3Ov0vp5vuR-Tjq7qhAitzSQl8H6eSrDbFAnWJR3TbVbu0Oww4fiY7jgtgHWg4xNxH39234a7ipute4LT-N7rcodqNZU'},
+    luva:{wp:'Luvas', nm:'Luvas de Moto | Smoke Out', en:'★ Moto Gloves | Smoke Out (Field-Tested)', w:'FT', brl:605.38,
+      img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu4r7_lb1QgTykpPf-i5U-fe9V6liNP-BDX6TzetJo-xmRCyMmBgjuiiI1NahdHiWagIlCMQhQLFc5EW8ltO0Neux5gLejYlHzCX3jntL6Chp4-wcEf1yt3Fk1nQ'},
+    armas:[
+      {wp:'AK-47', side:'TR', nm:'Slate', en:'AK-47 | Slate (Minimal Wear)', w:'MW', usd:7.22, r:'restricted', why:'A AK preta mais vendida do jogo. Em MW o cinza ardósia fica bem uniforme.',
+        img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLwlcK3wiVI0POlPPNSMOKcCGKD0ud5vuBlcCW6khUz_W3Sytb4cCqTOFUpWJtzTOUD5hPsw9a0Yrnrs1SK3ooXzy6shilM5311o7FVYrIufmI'},
+      {wp:'M4A1-S', side:'CT', nm:'Printstream', en:'M4A1-S | Printstream (Field-Tested)', w:'FT', usd:185.00, r:'covert', why:'Branco perolado com grafismo preto. Uma das M4 mais desejadas do jogo e o destaque do kit.',
+        img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL8ypexwjFS4_ega6F_H_OGMWrEwL9lj_F7Rienhgk1tjyIpYL8JSLSMxghAsBwQeMN5BHtlIblZuLr4Q3biNkRmH_5iX5Muypj47pWA6EsqPaGkUifZp-rQ1Ym'},
+      {wp:'AWP', side:'TR/CT', nm:'Neo-Noir', en:'AWP | Neo-Noir (Field-Tested)', w:'FT', usd:43.55, r:'covert', why:'Arte de HQ noir em preto e branco. Combina com o trio Printstream sem repetir o desenho.',
+        img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLwiYbf_jdk7uW-V6poL_6cB3WvzOtyufRkAS3rwE4h5D-Am939eXrGa1d1DJMlRe8Dshi-ltPvNbjr5AfWiIhHyX3gznQey5gGLwk'},
+      {wp:'Desert Eagle', side:'TR/CT', nm:'Printstream', en:'Desert Eagle | Printstream (Field-Tested)', w:'FT', usd:38.41, r:'covert', why:'Branco perolado com grafismo preto. Uma das Deagles mais bonitas e combina perfeito com a faca.',
+        img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL1m5fn8Sdk7OeRbKFsJ8-DHG6e1f1iouRoQha-kBkupjDLz9_6c3mWPFBxX8N0EOMIsULpmtHjPuvq41bc2dhAzy3_2ngfvHpt5_FCD_RJLjxjaQ'},
+      {wp:'USP-S', side:'CT', nm:'Printstream', en:'USP-S | Printstream (Field-Tested)', w:'FT', usd:37.43, r:'covert', why:'Fecha o trio Printstream com a M4 e a Deagle. Lado CT inteiro no mesmo visual.',
+        img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLkjYbf7itX6vytbbZSI-WsG3SA_v5kue99XD2hkBwqjDCAnobsLGXFOwQnCZQmE7MPu0G5l9HhNe7q7lOK2tgXmCn4jiofvCZisboKWfZw5OSJ2G1OXXQx'},
+      {wp:'Glock-18', side:'TR', nm:'Block-18', en:'Glock-18 | Block-18 (Field-Tested)', w:'FT', usd:0.46, r:'restricted', why:'Grafite preto e branco. Pistola de pistol round resolvida por R$ 3.',
+        img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL2kpnj9h1c4_2tY5tvMvmQBVidzuByouhoQRa-kBkupjDLmN-rJH3FZgUkWMF2EOVfsUS8lNO1Nrzm4wbY2I9EzCT23StI6Hs4t_FCD_Qg7K1xSg'}
+    ]
+  },
+  forest:{
+    nome:'Kit Forest', quem:'Kit 2 · Verde de mata',
+    desc:'Verde-oliva, cáqui e camuflado militar. Clima de mata fechada, com a faca de animação mais famosa do jogo.',
+    faca:{wp:'Faca', nm:'Canivete Borboleta | Safari Mesh', en:'★ Butterfly Knife | Safari Mesh (Field-Tested)', w:'FT', brl:2844.68,
+      img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1Z-ua6bbZrLOmsHXevzOtluN59TieMmBgjuiiI1Negd3-TaFUhWZciELEJtxS8kdznPr7m5ACMg40XniqsiC5I63posrocEf1ybD3MrwU'},
+    luva:{wp:'Luvas', nm:'Luvas de Moto | 3rd Commando Company', en:'★ Moto Gloves | 3rd Commando Company (Field-Tested)', w:'FT', brl:254.88,
+      img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu4r7_lb1QgTykpPf-i5U-fe9V6liNP-BDX6TzetJs-5kQii9kRIYuC6OpYL8JSLSMxhzCpokTLIJ4Ba9mtDiPuq3tVGMg9hAnyr3jntK7y1q5-sKUqUhqKCEkUifZo15QH27'},
+    armas:[
+      {wp:'AK-47', side:'TR', nm:'Green Laminate', en:'AK-47 | Green Laminate (Field-Tested)', w:'FT', usd:16.05, r:'milspec', why:'Coronha de madeira laminada verde. AK clássica, com cara de arma de campo.',
+        img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLwlcK3wipC0POlPPNhIf2sCXWVxOBJveRtRjy-2x5z5j-Gy93_IHrFOAV0X5t4R-UNtkKwld3mZejq7wbaiYkUzSqq3yNXrnE8D-mYqFg'},
+      {wp:'M4A1-S', side:'CT', nm:'Basilisk', en:'M4A1-S | Basilisk (Field-Tested)', w:'FT', usd:7.55, r:'restricted', why:'Escamas de réptil em verde e dourado envelhecido. Bonita de perto e barata.',
+        img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL8ypexwjFS4_ega6F_H_GCMWrEwL9lj-NoXCC_nA4sjDCAnobsLGWXbgEnC8RzEOUOuxS7w9S0P77k7g3e2dgWzn-oiSlLuCw967wBB6F35OSJ2FhRctFB'},
+      {wp:'AWP', side:'TR/CT', nm:'Atheris', en:'AWP | Atheris (Field-Tested)', w:'FT', usd:4.76, r:'restricted', why:'Serpente verde enrolada no cano. Uma das AWPs mais bonitas abaixo de R$ 30.',
+        img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLwiYbf_jdk7uW-V7JkMPWBMWqVxedjva85Girklhl2sWuAmYusICqWbQJxCcclRe4C4Ba5ldOyYeri7gKLg95E02yg2f7FnVOo'},
+      {wp:'Desert Eagle', side:'TR/CT', nm:'Trigger Discipline', en:'Desert Eagle | Trigger Discipline (Field-Tested)', w:'FT', usd:0.80, r:'restricted', why:'Preta com verde-limão. Completa o tema por menos de R$ 5.',
+        img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL1m5fn8Sdk7OeRbKFsJ8-HHG6Xxutkj-VgXCq6hREuvTi6l4r9KD7KcFcmD8R0QecNtkTsw9HgPrzgtAGMjo0TmX2r2y4duiZutesLBKZ2r6zJz1aWAJe-_z0'},
+      {wp:'USP-S', side:'CT', nm:'Overgrowth', en:'USP-S | Overgrowth (Field-Tested)', w:'FT', usd:18.71, r:'restricted', why:'Trepadeiras e folhas tomando a pistola. A skin mais "floresta" do kit.',
+        img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLkjYbf7itX6vytbbZSKOmsHW6VxutJsvNoWSaMmBgjuiiI1N78dCiRZwQnD5J3QuAJ5xe_ldLhY-K04w3b2YwRmCyrh3gfvyo567kcEf1yPBZMvcQ'},
+      {wp:'Glock-18', side:'TR', nm:'Nuclear Garden', en:'Glock-18 | Nuclear Garden (Field-Tested)', w:'FT', usd:2.12, r:'restricted', why:'Verde vivo com plantas. Pistola de pistol round por R$ 12.',
+        img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL2kpnj9h1a4s2gfadhJfGBMXSb1OJ6o95uXSy2myIqtjmMj4K3eX3DbgIgXpciQbUDuxa6k4G0Yrzq5AOI2YJCyyv-jCkdvC5qt-5XU71lpPNwWtaaBA'}
+    ]
+  }
+};
+const RATE = 5.73; // taxa implícita da Steam (R$/US$) medida nas facas e luvas
+
+function priceOf(it){ return it.brl ?? +(it.usd*RATE).toFixed(2); }
+function imgBox(it){
+  return `<div class="img"><img loading="lazy" alt="${it.wp} ${it.nm}" src="${IMG(it.img)}" onerror="this.parentNode.classList.add('broken')"><div class="fb">${it.wp}<br>${it.nm}</div></div>`;
+}
+function links(it){
+  return `<div class="links">
+    <a class="btn primary" href="${YT(it.en)}" target="_blank" rel="noopener">▶ No jogo</a>
+    <a class="btn" href="${STEAM(it.en)}" target="_blank" rel="noopener">Steam</a>
+    <a class="btn" href="${FLOAT(it.en)}" target="_blank" rel="noopener">CSFloat</a>
+  </div>`;
+}
+function render(k){
+  const K = KITS[k];
+  const all = [K.faca, K.luva, ...K.armas];
+  const total = all.reduce((s,it)=>s+priceOf(it),0);
+  const combo = it => `<div class="combo-cell">
+      ${imgBox(it)}
+      <div class="meta">${it.wp} · ${WEAR[it.w]}</div>
+      <div class="nm">${it.nm}</div>
+      <div class="pr">${brl(priceOf(it))}</div>
+      ${links(it)}
+    </div>`;
+  const items = K.armas.map(it=>`<article class="item r-${it.r}">
+      ${imgBox(it)}
+      <div class="body">
+        <div class="row1"><span class="wp">${it.wp}</span><span class="side">${it.side}</span></div>
+        <div class="nm">${it.nm}</div>
+        <div class="why">${it.why}</div>
+        <div class="foot"><span class="pr">${brl(priceOf(it))}<small>${it.w}</small></span>${links(it)}</div>
+      </div>
+    </article>`).join('');
+  const rows = all.map(it=>`<tr><td>${it.wp} · ${it.nm}</td><td>${brl(priceOf(it))}</td></tr>`).join('');
+  document.getElementById('kit').innerHTML = `<section class="kit" aria-labelledby="h-${k}">
+    <div class="kit-head">
+      <div><div class="eyebrow">${K.quem}</div><h2 id="h-${k}">${K.nome}</h2><p>${K.desc}</p></div>
+      <div class="total"><div class="v">${brl(total)}</div><div class="s">total na Steam</div></div>
+    </div>
+    <div class="combo"><div class="combo-grid">${combo(K.faca)}${combo(K.luva)}</div></div>
+    <div class="section-label"><h3>Armas principais</h3><span>6 skins</span></div>
+    <div class="list">${items}</div>
+    <div class="summary"><table>${rows}<tr class="tot"><td>Total do kit</td><td>${brl(total)}</td></tr></table></div>
+  </section>`;
+  document.body.dataset.kit = k;
+  document.querySelectorAll('.tab').forEach(t=>t.setAttribute('aria-selected', t.dataset.k===k));
+  const tabTotal = document.querySelector(`#tab-${k} span`);
+  if(tabTotal) tabTotal.textContent = `${k==='noir'?'Kit 1':'Kit 2'} · ≈ ${brl(total)}`;
+}
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{ render(t.dataset.k); try{history.replaceState(null,'','#'+t.dataset.k)}catch(e){} }));
+// pré-calcula os totais das duas abas
+['forest','noir'].forEach(render);
+render(location.hash==='#forest'?'forest':'noir');
+</script>
+</body>
+</html>
