@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Kits CS2 · Noir & Forest</title>
+<title>Kits CS2</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
@@ -35,10 +35,12 @@ h1{font:700 32px/1.05 var(--f-display);margin:8px 0 6px;letter-spacing:.01em;tex
 
 /* Abas */
 .tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:12px;margin-top:12px;border-bottom:1px solid var(--line)}
-.tabs-inner{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.tab{appearance:none;border:1px solid var(--line);background:var(--panel);color:var(--fg);border-radius:10px;padding:10px 12px;text-align:left;cursor:pointer;font:inherit}
-.tab b{display:block;font:700 16px/1.2 var(--f-display);letter-spacing:.02em}
-.tab span{font-size:12px;color:var(--muted)}
+.tabs-inner{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.tab{position:relative;padding-left:22px!important}
+.tab i{position:absolute;left:9px;top:13px;width:8px;height:8px;border-radius:50%;background:var(--dot)}
+.tab{appearance:none;border:1px solid var(--line);background:var(--panel);color:var(--fg);border-radius:10px;padding:9px 8px;text-align:left;cursor:pointer;font:inherit}
+.tab b{display:block;font:700 14px/1.2 var(--f-display);letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tab span{font-size:11px;color:var(--muted);white-space:nowrap}
 .tab[aria-selected="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
 .tab:focus-visible,.btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 
@@ -120,14 +122,12 @@ footer a{color:var(--fg)}
 <div class="wrap">
   <header class="top">
     <div class="eyebrow">CS2 · preços de 18/11/2026</div>
-    <h1>Dois kits completos, faca + luva + armas</h1>
-    <p class="lede">Um preto e branco, outro verde de mata. Cada kit cobre as 8 peças que mais aparecem na tela: faca, luvas, AK, M4, AWP e as três pistolas.</p>
+    <h1>Kits completos: faca, luvas e armas</h1>
+    <p class="lede">Seis temas de cor, de R$ 2.700 a R$ 3.600 na Steam, com a faca como peça principal. Cada kit cobre as 8 peças que mais aparecem na tela: faca, luvas, AK, M4, AWP e as três pistolas.</p>
   </header>
 
   <nav class="tabs" role="tablist" aria-label="Escolha o kit">
     <div class="tabs-inner">
-      <button class="tab" role="tab" id="tab-noir" aria-selected="true" data-k="noir"><b>KIT NOIR</b><span>Kit 1 · ≈ R$ 3.428</span></button>
-      <button class="tab" role="tab" id="tab-forest" aria-selected="false" data-k="forest"><b>KIT FOREST</b><span>Kit 2 · ≈ R$ 3.386</span></button>
     </div>
   </nav>
 
@@ -171,7 +171,7 @@ const WEAR = {FN:'Nova de Fábrica',MW:'Pouco Usada',FT:'Testada em Campo'};
 
 const KITS = {
   noir:{
-    nome:'Kit Noir', quem:'Kit 1 · Preto e branco',
+    nome:'Kit Noir', quem:'Kit 1 · Preto e branco', cor:'#f2f2f2',
     desc:'Preto, cinza e branco do começo ao fim, com o trio Printstream na M4, USP e Deagle. Visual limpo, que combina com qualquer adesivo.',
     faca:{wp:'Faca', nm:'Baioneta | Laminado Preto', en:'★ Bayonet | Black Laminate (Field-Tested)', w:'FT', brl:1034.35,
       img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLzn4_v8ydP0PG7V6ZsOf-dC3Ov0vp5vuR-Tjq7qhAitzSQl8H6eSrDbFAnWJR3TbVbu0Oww4fiY7jgtgHWg4xNxH39234a7ipute4LT-N7rcodqNZU'},
@@ -193,7 +193,7 @@ const KITS = {
     ]
   },
   forest:{
-    nome:'Kit Forest', quem:'Kit 2 · Verde de mata',
+    nome:'Kit Forest', quem:'Kit 2 · Verde de mata', cor:'#9bc46b',
     desc:'Verde-oliva, cáqui e camuflado militar. Clima de mata fechada, com a faca de animação mais famosa do jogo.',
     faca:{wp:'Faca', nm:'Canivete Borboleta | Safari Mesh', en:'★ Butterfly Knife | Safari Mesh (Field-Tested)', w:'FT', brl:2844.68,
       img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1Z-ua6bbZrLOmsHXevzOtluN59TieMmBgjuiiI1Negd3-TaFUhWZciELEJtxS8kdznPr7m5ACMg40XniqsiC5I63posrocEf1ybD3MrwU'},
@@ -212,6 +212,94 @@ const KITS = {
         img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLkjYbf7itX6vytbbZSKOmsHW6VxutJsvNoWSaMmBgjuiiI1N78dCiRZwQnD5J3QuAJ5xe_ldLhY-K04w3b2YwRmCyrh3gfvyo567kcEf1yPBZMvcQ'},
       {wp:'Glock-18', side:'TR', nm:'Nuclear Garden', en:'Glock-18 | Nuclear Garden (Field-Tested)', w:'FT', usd:2.12, r:'restricted', why:'Verde vivo com plantas. Pistola de pistol round por R$ 12.',
         img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL2kpnj9h1a4s2gfadhJfGBMXSb1OJ6o95uXSy2myIqtjmMj4K3eX3DbgIgXpciQbUDuxa6k4G0Yrzq5AOI2YJCyyv-jCkdvC5qt-5XU71lpPNwWtaaBA'}
+    ]
+  },
+  crimson:{
+    nome:'Kit Crimson', quem:'Kit 3 · Vermelho e preto', cor:'#ff5a52',
+    desc:'Vermelho carmesim com teia preta. A faca e a Deagle têm o mesmo padrão Crimson Web, e AK e AWP Redline fecham o visual.',
+    faca:{wp:'Faca', nm:'Stiletto | Crimson Web', en:'★ Stiletto Knife | Crimson Web (Field-Tested)', w:'FT', usd:302.50,
+      img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1I-_uibbB5L8-bF1iHxOxlj-pnRi-2qhAitzSQl8GvJXKeZ1d2D5Z4EeZf50Xul4bvP-m07lfYjd0Rynj5ii8Y7X045LwFT-N7rQeaIp7u'},
+    luva:{wp:'Luvas', nm:'Luvas Broken Fang | Unhinged', en:'★ Broken Fang Gloves | Unhinged (Field-Tested)', w:'FT', usd:59.00,
+      img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Tg_13jRBnOnITv9idV6fOgb5tqLP-FC3Svzv5zouB9Ria9xE0YoDOEkYrqKiLJAVR8W8ErKrpf5kn9z8rgNeu37gbf3Y5Hziv4j3gbvyxo47pQBfVzq6feiVvBMeU8tJEGJvmvU13QD-pmf_lF'},
+    armas:[
+      {wp:'AK-47', side:'TR', nm:'Redline', en:'AK-47 | Redline (Field-Tested)', w:'FT', usd:30.25, r:'classified', why:'Preta com faixas vermelhas. A AK mais icônica do tema.',
+        img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLwlcK3wiFO0POlPPNSI_-RHGavzOtyufRkASq2lkxx4W-HnNyqJC3FZwYoC5p0Q7FfthW6wdWxPu-371Pdit5HnyXgznQeHYY5wyA'},
+      {wp:'M4A4', side:'CT', nm:'Evil Daimyo', en:'M4A4 | Evil Daimyo (Field-Tested)', w:'FT', usd:3.33, r:'restricted', why:'Máscara de samurai em vermelho e preto, muito estilo por quase nada.',
+        img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL8ypexwiFO0P_6afBSJeaaAliUwOd7qe5WQiy3nAgq_WrTz434cyqTa1QiXpBxTbMIuxC6w9ziNrnk4ALbjYsXmHiqjHkbvyZ1o7FVokH6Du4'},
+      {wp:'AWP', side:'TR/CT', nm:'Redline', en:'AWP | Redline (Field-Tested)', w:'FT', usd:39.74, r:'classified', why:'Faz par com a AK Redline.',
+        img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLwiYbf_jdk7uW-V6diIuKSMWqVxedjva85GXDgzE1z5GmAm9iodyiXbw92DJV1RbIJukTulYeyPuri5FHfiIgX02yg2bDKVgQu'},
+      {wp:'Desert Eagle', side:'TR/CT', nm:'Crimson Web', en:'Desert Eagle | Crimson Web (Field-Tested)', w:'FT', usd:10.64, r:'restricted', why:'Mesmo padrão da faca: a Deagle vira uma miniatura dela.',
+        img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL1m5fn8Sdk5-uRf6FvM8-XD3WbxPxJveRtRjy-2xh15zmGm9r6IHKTOFJ0DZIkQOFfuhnsk9PnMe_ls1Ha34hHznr5jC5XrnE8TAPhH1w'},
+      {wp:'USP-S', side:'CT', nm:'Cyrex', en:'USP-S | Cyrex (Field-Tested)', w:'FT', usd:3.34, r:'restricted', why:'Futurista em vermelho, branco e grafite.',
+        img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLkjYbf7itX6vytbbZSI-WsG3SA_u1vouRxcCS2kRQyvnPdmN-tJXmXbAJyApIlF7JcsRO6xNDnZLvisQzd3d1Fmyyr3Cwf6io6_a9cBmchrxE-'},
+      {wp:'Glock-18', side:'TR', nm:'Water Elemental', en:'Glock-18 | Water Elemental (Field-Tested)', w:'FT', usd:20.93, r:'classified', why:'Criatura vermelha que domina a pistola. Destaque do lado TR.',
+        img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL2kpnj9h1Y-s2pZKtuK72fB3aFxP11te99cCS2kRQyvnOGnNiodi6RPwEkWJV2EeFbtBTqkoDjMezk5wbZj4wRzi_2iShIuyls_a9cBjdLVuOU'}
+    ]
+  },
+  ice:{
+    nome:'Kit Ice', quem:'Kit 4 · Azul gelo', cor:'#4fd1ff',
+    desc:'Azul-água e ciano. A M9 Bayonet é uma das facas mais desejadas do jogo, e a M4 usa a mesma camuflagem dela.',
+    faca:{wp:'Faca', nm:'Baioneta M9 | Bright Water', en:'★ M9 Bayonet | Bright Water (Field-Tested)', w:'FT', usd:418.27,
+      img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1Wts2sab1iLvWHMW-J_uF1teBncCK9nBsijGTVpYL8JSLSMxhzDMYhTLUD4Re6ktTkMbvh5AyI394UmSv9hiJK63k_4O8CVaMm__eFkUifZn6YDkD1'},
+    luva:{wp:'Luvas', nm:'Luvas de Moto | Polygon', en:'★ Moto Gloves | Polygon (Field-Tested)', w:'FT', brl:630.77,
+      img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu4r7_lb1QgTykpPf-i5U-fe9V6liNP-BDX6TzetJpPNgSDu6kSIlvyiApYL8JSLSMxgjW8R5Re9ZuxbqkNy2ZbnjtgTaitlCmy-q3H5MuilrsLpTVqYjr_DfkUifZvxWNaC1'},
+    armas:[
+      {wp:'AK-47', side:'TR', nm:'Ice Coaled', en:'AK-47 | Ice Coaled (Field-Tested)', w:'FT', usd:5.29, r:'classified', why:'Gradiente verde-água translúcido. Parece bem mais cara do que é.',
+        img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLwlcK3wiFO0POlPPNSI_-UGm-Zz-llj-xsSyCmmFMi5GrcwtivdnnCOgd2DsNxTeIJuxbqk9XuN-_i5gKI3d1BxH35iy1P8G81tKMOXOY4'},
+      {wp:'M4A1-S', side:'CT', nm:'Bright Water', en:'M4A1-S | Bright Water (Field-Tested)', w:'FT', usd:31.85, r:'restricted', why:'Mesma camuflagem azul da faca. As duas ficam idênticas lado a lado.',
+        img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL8ypexwjFS4_ega6F_H_iKMWiTxO94j-N7Tj-8qhAitzSQl8Ghc37FZwJ2A8NyFO5fs0W7mtXvMb7n7wfY34IWzymo23tM6Sw56u4BT-N7rWy2UJZf'},
+      {wp:'AWP', side:'TR/CT', nm:'Chromatic Aberration', en:'AWP | Chromatic Aberration (Field-Tested)', w:'FT', usd:32.39, r:'covert', why:'Covert em azul e roxo com efeito glitch.',
+        img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLwiYbf_jdk7uW-V6dlMv-eD1iAyOB9j-xsSyCmmFNz4WXTz4n6cHyUbQ50D5AiF-Ne4ES9m9K1MePq4leKjYlGyX363S0d8G81tKSnYp_g'},
+      {wp:'Desert Eagle', side:'TR/CT', nm:'Mecha Industries', en:'Desert Eagle | Mecha Industries (Field-Tested)', w:'FT', usd:5.75, r:'classified', why:'Mecânica em azul e branco, barata e no tema.',
+        img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL1m5fn8Sdk6OGRbKFsJ_yWMWqVwuZ3j-xsSyCmmFNxtzvUnouqdi_EZgB2X5d5ELUNuhDqxoazYu634QPX3oxAnyj_jnlP8G81tF-I545Z'},
+      {wp:'USP-S', side:'CT', nm:'Jawbreaker', en:'USP-S | Jawbreaker (Field-Tested)', w:'FT', usd:4.02, r:'classified', why:'Azul e ciano vivos, quase de graça.',
+        img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLkjYbf7itX6vytbbZSNeODHViUzulxqd5kSi26gBBp42mDz939J32VZwFyA8FxReBesRO8wdK0ZrzitQ2K2oMTzCWviCMb5jErvbgcxKeE5g'},
+      {wp:'Glock-18', side:'TR', nm:'Water Elemental', en:'Glock-18 | Water Elemental (Field-Tested)', w:'FT', usd:20.93, r:'classified', why:'Elemental de água: fecha o tema aquático no lado TR.',
+        img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL2kpnj9h1Y-s2pZKtuK72fB3aFxP11te99cCS2kRQyvnOGnNiodi6RPwEkWJV2EeFbtBTqkoDjMezk5wbZj4wRzi_2iShIuyls_a9cBjdLVuOU'}
+    ]
+  },
+  gold:{
+    nome:'Kit Pharaoh', quem:'Kit 5 · Dourado e preto', cor:'#f2c14e',
+    desc:'Ouro sobre preto, com clima egípcio. A Baioneta Lore tem a lâmina dourada gravada com runas.',
+    faca:{wp:'Faca', nm:'Baioneta | Lore', en:'★ Bayonet | Lore (Field-Tested)', w:'FT', usd:272.93,
+      img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLzn4_v8ydP0PG7V6ZsOf-dC3OvzeFktd5kSi26gBBp5D-AzNaqIHLBa1MpWcMjR-AI4EOxkt2xYuvk5Q2L2tkTnHqt3SlK5zErvbhU-sE7AQ'},
+    luva:{wp:'Luvas', nm:'Luvas Broken Fang | Yellow-banded', en:'★ Broken Fang Gloves | Yellow-banded (Field-Tested)', w:'FT', usd:52.00,
+      img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Tg_13jRBnOnITv9idV6fOgb5tqLP-FC3Svzv5zouB9Ria9xE0YozKMiYD3Hi3VMVFPWM4hFrxl-0XkzougWLe3s1yb1pVDzSiq3C8d5idj5rkHVfd3rKaBil7EYrw15ZAEJ_ynS0jaDU8KvP80Wsm9mcfvjQMg'},
+    armas:[
+      {wp:'AK-47', side:'TR', nm:'Legion of Anubis', en:'AK-47 | Legion of Anubis (Field-Tested)', w:'FT', usd:34.12, r:'covert', why:'Estética egípcia em ouro e preto, o coração do tema.',
+        img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLwlcK3wiFO0POlPPNSIf6GDG6D_uNztOh8QmfilEojtW2AmNaodS6RaQMnXpQjTLQJtBLtxNXhZO-0slDX344UmXn2kGoXucROEi-9'},
+      {wp:'M4A1-S', side:'CT', nm:'Golden Coil', en:'M4A1-S | Golden Coil (Field-Tested)', w:'FT', usd:67.00, r:'covert', why:'Serpentes douradas sobre fundo escuro. A peça de luxo das armas.',
+        img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL8ypexwjFS4_ega6F_H_eAMWrEwL9lj_JnTiK2lxQztgKClYP9HibCOl9lV4wiRuACuxfrkoXiNL_i4VDXjIgTxSr43X4f7ik457wAWfAjrKTRjgHGL_RjtqbVPGVJ'},
+      {wp:'AWP', side:'TR/CT', nm:'Black Nile', en:'AWP | Black Nile (Field-Tested)', w:'FT', usd:3.02, r:'milspec', why:'Preta com detalhes dourados, da mesma coleção Anubis da AK.',
+        img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLwiYbf-jFk7uW-V7d5Mv-dC1idxOp_pewnGHnmk0t-5m_dz9b4JHufPAYgCcQkFuMC5xi6kNa0MOrn71fWgtlHyjK-0H1PwLc7Vw'},
+      {wp:'Desert Eagle', side:'TR/CT', nm:'Kumicho Dragon', en:'Desert Eagle | Kumicho Dragon (Field-Tested)', w:'FT', usd:18.14, r:'classified', why:'Dragão dourado sobre preto, imponente.',
+        img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL1m5fn8Sdk7uORbKF-JeKHC2aXzetJu_RkRiq7mhk1sjqKlLD0JC_OK1s-DsclRrYPt0SxltXlMLu04QyNjN9Hyyv2iSJB5ntitb4AAPIi-K3ShxaBb-NmvxQSPw'},
+      {wp:'USP-S', side:'CT', nm:'The Traitor', en:'USP-S | The Traitor (Field-Tested)', w:'FT', usd:34.12, r:'covert', why:'Arte amarela e dourada em estilo vitral.',
+        img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLkjYbf7itX6vytbbZSJ-OsG3SA0tF-se9uSi2-lBMYvjiBk5r0b3yQaABxCsdyR-dc4BS5l4DlYujntgCMi49AmCv5ii0buik54ucAVfI7uvqAawge80M'},
+      {wp:'Glock-18', side:'TR', nm:'Gold Toof', en:'Glock-18 | Gold Toof (Field-Tested)', w:'FT', usd:30.93, r:'covert', why:'Dente de ouro com muito brilho. Fecha o kit com estilo.',
+        img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL2kpnj9h1c4_2tY5tuKP-eHmKC_uNztOh8QmfmkE0l4m7Xy9epJX2fZwEkC5UmReMC4xe5kYDuN-LktgGLid8TxC39kGoXufaEN_P6'}
+    ]
+  },
+  neon:{
+    nome:'Kit Neon', quem:'Kit 6 · Roxo e rosa', cor:'#e070ff',
+    desc:'Roxo, rosa e magenta em clima synthwave. A faca Doppler Nova de Fábrica brilha em tons metálicos de roxo e rosa.',
+    faca:{wp:'Faca', nm:'Faca do Caçador | Doppler', en:'★ Huntsman Knife | Doppler (Factory New)', w:'FN', usd:291.07,
+      img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1P7vG6YadsLM-SA1iUzv5mvOR7cDm7lA4i4AKJk4jxNWWROAEmX5omROIPskTtmobkZrvjtgzajIwRmSn723xK6Shr4LpXV6Yh5OSJ2Po9oSed'},
+    luva:{wp:'Luvas', nm:'Luvas de Moto | POW!', en:'★ Moto Gloves | POW! (Battle-Scarred)', w:'BS', usd:52.87,
+      img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu4r7_lb1QgTykpPf-i5U-fe9V6liNP-BDX6TzetJs-lmTCaMlxIovgKNn47vOGXFOlMiW5R4FOYNsETrk9KxM-PisVCLjt5GxCv7jiMd7i5usupUAvAt5OSJ2I1D0hJl'},
+    armas:[
+      {wp:'AK-47', side:'TR', nm:'Neon Rider', en:'AK-47 | Neon Rider (Field-Tested)', w:'FT', usd:48.38, r:'covert', why:'Synthwave em rosa e roxo neon. É o tema em forma de AK.',
+        img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLwlcK3wiFO0POlV6poL_6sHG6UxPxJveRtRjy-2x9_5GiBmYn4JHiVa1NyXMMkRuNe5ka5k9eyM-q2sQHc2NpCmyWvin5XrnE89iGyCXM'},
+      {wp:'M4A1-S', side:'CT', nm:'Nightmare', en:'M4A1-S | Nightmare (Field-Tested)', w:'FT', usd:9.35, r:'classified', why:'Roxo sombrio com detalhes brilhantes. Ótimo custo-benefício.',
+        img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL8ypexwjFS4_ega6F_H_OGMWrEwL9lj-9gSCGnmBw1tgKIn4vwNCaJaAJ1WZNwE-Rft0G8kIKyNui24lPcjoNFn3n3iCtMuHo447tWVfcjqbqX0V8N9uh_hA'},
+      {wp:'AWP', side:'TR/CT', nm:'Fever Dream', en:'AWP | Fever Dream (Field-Tested)', w:'FT', usd:12.99, r:'classified', why:'Arte psicodélica em magenta e roxo.',
+        img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLwiYbf_jdk7uW-V7R-OfObAXeR1eZJveRtRjy-2xsk626DzdesdiqQbVIgWMZ5QrIDsxnrwNTkPurg5AeKiN0Xyir8iypXrnE800aE0Zs'},
+      {wp:'Desert Eagle', side:'TR/CT', nm:'Ocean Drive', en:'Desert Eagle | Ocean Drive (Field-Tested)', w:'FT', usd:85.58, r:'covert', why:'Rosa e azul estilo Miami. A peça de luxo das armas.',
+        img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL1m5fn8Sdk7OeRbKFsJ_yWMWyZ1e1-j-xsSyCmmFN_4jjWm9r4dX2UaFUmW8QhF-8CuxHrw4DuZLvi41fX2YkTyyj82H8c8G81tL4Q1wXb'},
+      {wp:'USP-S', side:'CT', nm:'Cortex', en:'USP-S | Cortex (Field-Tested)', w:'FT', usd:3.88, r:'classified', why:'Cérebro rosa-choque sobre fundo escuro.',
+        img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLkjYbf7itX6vytbbZSI-WsG3SA_u1jpN5kSi26gBBp4D7TwoqsJC6faQUiWcchQrECu0Kwk4K2P-zltVHbj44RnyT2jH8b5zErvbgF1pSM3w'},
+      {wp:'Glock-18', side:'TR', nm:'Vogue', en:'Glock-18 | Vogue (Field-Tested)', w:'FT', usd:4.18, r:'classified', why:'Estilo pop em rosa e roxo.',
+        img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL2kpnj9h1Y-s2pZKtuK8-WF2KTzuBiseJ9cCS2kRQyvnOEwtb6dHyUOAEhWJdxTbELsxi4mtHuN-jr7wXfi44Xni2vjSsd7ydo_a9cBrvZd2pE'}
     ]
   }
 };
@@ -260,14 +348,15 @@ function render(k){
     <div class="summary"><table>${rows}<tr class="tot"><td>Total do kit</td><td>${brl(total)}</td></tr></table></div>
   </section>`;
   document.body.dataset.kit = k;
+  document.body.style.setProperty('--accent', K.cor);
   document.querySelectorAll('.tab').forEach(t=>t.setAttribute('aria-selected', t.dataset.k===k));
-  const tabTotal = document.querySelector(`#tab-${k} span`);
-  if(tabTotal) tabTotal.textContent = `${k==='noir'?'Kit 1':'Kit 2'} · ≈ ${brl(total)}`;
 }
-document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{ render(t.dataset.k); try{history.replaceState(null,'','#'+t.dataset.k)}catch(e){} }));
-// pré-calcula os totais das duas abas
-['forest','noir'].forEach(render);
-render(location.hash==='#forest'?'forest':'noir');
+const kitTotal = K => [K.faca,K.luva,...K.armas].reduce((s,it)=>s+priceOf(it),0);
+document.querySelector('.tabs-inner').innerHTML = Object.entries(KITS).map(([k,K])=>
+  `<button class="tab" role="tab" id="tab-${k}" data-k="${k}" style="--dot:${K.cor}"><i></i><b>${K.nome.replace('Kit ','').toUpperCase()}</b><span>≈ ${brl(kitTotal(K))}</span></button>`).join('');
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{ render(t.dataset.k); try{history.replaceState(null,'','#'+t.dataset.k)}catch(e){} window.scrollTo({top:document.querySelector('.tabs').offsetTop,behavior:'smooth'}); }));
+const start = location.hash.slice(1);
+render(KITS[start] ? start : 'noir');
 </script>
 </body>
 </html>
