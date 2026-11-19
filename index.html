@@ -95,6 +95,21 @@ h1{font:700 32px/1.05 var(--f-display);margin:8px 0 6px;letter-spacing:.01em;tex
 
 .r-covert{--rar:var(--covert)} .r-classified{--rar:var(--classified)} .r-restricted{--rar:var(--restricted)} .r-milspec{--rar:var(--milspec)} .r-star{--rar:#e4ae39}
 
+.picker{margin-top:14px}
+.picker .hint{font-size:12px;color:var(--muted);margin:0 0 8px}
+.knives{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;
+  margin-inline:calc(-1 * max(16px, env(safe-area-inset-left,0px)));padding-inline:max(16px, env(safe-area-inset-left,0px));scroll-padding-inline:max(16px, env(safe-area-inset-left,0px));padding-block:2px 10px;scrollbar-width:thin}
+.knives::-webkit-scrollbar{height:4px}.knives::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+.kopt{appearance:none;font:inherit;color:var(--fg);text-align:left;cursor:pointer;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:6px 6px 8px;display:flex;flex-direction:column;gap:2px;flex:0 0 124px;min-width:0;scroll-snap-align:start}
+.kopt .img{aspect-ratio:4/3;background:var(--panel-2)}
+.kopt b{font:600 13px/1.15 var(--f-display);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kopt small{font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kopt span{font:600 13px/1.2 var(--f-display);font-variant-numeric:tabular-nums}
+.kopt em{font-style:normal;font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+.kopt[aria-pressed="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.kopt[aria-pressed="true"] span{color:var(--accent)}
+.kopt[aria-pressed="true"] em{color:var(--fg)}
+.kopt:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 /* Resumo e dicas */
 .summary{margin-top:22px;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden}
 .summary table{width:100%;border-collapse:collapse;font-size:13px}
@@ -172,6 +187,19 @@ const WEAR = {FN:'Nova de Fábrica',MW:'Pouco Usada',FT:'Testada em Campo'};
 const KITS = {
   noir:{
     nome:'Kit Noir', quem:'Kit 1 · Preto e branco', cor:'#f2f2f2',
+    facas:[
+      {wp:'Faca', nm:"Paracord | Night Stripe", en:"\u2605 Paracord Knife | Night Stripe (Field-Tested)", w:'FT', usd:54.77, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1Y4OCqV7d9H_6aCW-E0vpkufFscCS2kRQyvnOEn4yoJ33GOld0CpMjTeYJ50HplYDiY-jntgHf3YtNzS_5jC5NvSdr_a9cBkdqBnUE'},
+      {wp:'Faca', nm:"Ursus | Night Stripe", en:"\u2605 Ursus Knife | Night Stripe (Field-Tested)", w:'FT', usd:78.89, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1O_eG7e5t-MM-dB2CY1f1iouh5Sha-kBkupjDLzd3_eX6TOAYkXJZ4FrZZthjskYCxMePq7lCKio4RxHj73Sofvyc44PFCD_TDPMG2fw'},
+      {wp:'Faca', nm:"Nomad | Night Stripe", en:"\u2605 Nomad Knife | Night Stripe (Field-Tested)", w:'FT', usd:102.73, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1U-uaqZ6t_H-ODMWmZxuZio_V7Rjm2qhAitzSQl8Gpd36ROg90DsRzROMJuhbsxIXkNujkslbbidoQyyT3iy5N7Xlj470DT-N7rUTWUhtP'},
+      {wp:'Faca', nm:"Classic | Night Stripe", en:"\u2605 Classic Knife | Night Stripe (Field-Tested)", w:'FT', usd:109.25, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1Y_OGRe7RSLvmUBnOD1fx_oORWQiy3nAgq_W2Gw939JHLDPAR0X5sjEOYNukG_xNC1YuPg5AHe2o5Hz36qjS9BvHp1o7FVt6TpcPk'},
+      {wp:'Faca', nm:"Flip | Black Laminate", en:"\u2605 Flip Knife | Black Laminate (Field-Tested)", w:'FT', usd:143.07, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1d4_u-V6d4H_afB3ev0vp5vuR-Tjq7qhAitzSQl8GodHPCawYiW5MiFuBesRi7kNzjZrnl4FPZ34oQniT42Hgb6X1ssO8ET-N7rXGgrfZJ'},
+      {wp:'Faca', nm:"Skeleton | Night Stripe", en:"\u2605 Skeleton Knife | Night Stripe (Field-Tested)", w:'FT', usd:165.07, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1I5PeibbBiLs-AHlieyOl-pPJ9XSCjkCIqtjmMj4K3J3yVbAciWcFyF-BZsBK-xNeyML_q4lDa2dlHzXn5234Y6Xpote4FAL1lpPMxHj4Skg'},
+      {wp:'Faca', nm:"Baioneta | Black Laminate", en:"\u2605 Bayonet | Black Laminate (Field-Tested)", w:'FT', usd:180.50, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLzn4_v8ydP0PG7V6ZsOf-dC3Ov0vp5vuR-Tjq7qhAitzSQl8H6eSrDbFAnWJR3TbVbu0Oww4fiY7jgtgHWg4xNxH39234a7ipute4LT-N7rcodqNZU'},
+      {wp:'Faca', nm:"Stiletto | Night Stripe", en:"\u2605 Stiletto Knife | Night Stripe (Field-Tested)", w:'FT', usd:184.99, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1I-_uibbB5L8-AHlieyOl-pPJ9XSCjkCIqtjmMj4K3eXOXOgUiW5V3F-JetxO4kNe1MLvj4QLcjolMmyit3yMd6Hps4epUWb1lpPNzSqTHUA'},
+      {wp:'Faca', nm:"Talon | Night Stripe", en:"\u2605 Talon Knife | Night Stripe (Field-Tested)", w:'FT', usd:296.04, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1M5vahf6lsK_WBMXSA_uB_t-l9XD2hnA0ijDCAnobsLGXCOgEoXJMhReQCuxK5wYfuY7-x5laIjd5Mynr72n5B73xt6u8EVvYt5OSJ2N1h79aD'},
+      {wp:'Faca', nm:"M9 Bayonet | Black Laminate", en:"\u2605 M9 Bayonet | Black Laminate (Field-Tested)", w:'FT', usd:530.00, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1Wts2sab1iLvWHMWSF_uMvj-NoVhaggRIptiqEiYfGLC7DN0N9FMMhELFYtRLpx9W0MLjh4Q2L2d9AyHiv3HhKvCc44L0CAKJxrPfXjADfcepqy0ujMBs'},
+      {wp:'Faca', nm:"Butterfly | Urban Masked", en:"\u2605 Butterfly Knife | Urban Masked (Field-Tested)", w:'FT', usd:540.00, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1Z-ua6bbZrLOmsHXev1e9mtd58XSuymyIqtjmMj4K3InmWbQUkDJMiRbZZ5BXtwNWxN-6zsQDfiIhEySj62ykYvCY64epTVb1lpPPoDe1SIg'}
+    ],
     desc:'Preto, cinza e branco do começo ao fim, com o trio Printstream na M4, USP e Deagle. Visual limpo, que combina com qualquer adesivo.',
     faca:{wp:'Faca', nm:'Baioneta | Laminado Preto', en:'★ Bayonet | Black Laminate (Field-Tested)', w:'FT', brl:1034.35,
       img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLzn4_v8ydP0PG7V6ZsOf-dC3Ov0vp5vuR-Tjq7qhAitzSQl8H6eSrDbFAnWJR3TbVbu0Oww4fiY7jgtgHWg4xNxH39234a7ipute4LT-N7rcodqNZU'},
@@ -194,6 +222,21 @@ const KITS = {
   },
   forest:{
     nome:'Kit Forest', quem:'Kit 2 · Verde de mata', cor:'#9bc46b',
+    facas:[
+      {wp:'Faca', nm:"Paracord | Forest DDPAT", en:"\u2605 Paracord Knife | Forest DDPAT (Field-Tested)", w:'FT', usd:49.45, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1Y4OCqV6x0H_SXHmaE_uV4uedscCS2kRQyvnOHztv4cXnGZlIkX5t1ROVetEOwkYC2P-KztADfj4kQmHj923xMvSpt_a9cBrOM48o5'},
+      {wp:'Faca', nm:"Ursus | Forest DDPAT", en:"\u2605 Ursus Knife | Forest DDPAT (Field-Tested)", w:'FT', usd:68.58, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1O_eG7e5tlOc-XCneR1dF9vuhvSha-kBkupjDLzoqtIC-UbwEiC5d5TeULuxDsxNDhZbjl51Dd2YpDzi6qhyscuidi4PFCD_STHJ0-Bg'},
+      {wp:'Faca', nm:"Classic | Forest DDPAT", en:"\u2605 Classic Knife | Forest DDPAT (Field-Tested)", w:'FT', usd:80.74, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1Y_OGRYL1SJPSDD3OvyuB_tuRWQiy3nAgq_WjXyNqvdHnDbAciDcN2F7JZtxnuwIDmYbu05FOP2dlNnir_hiMb6yl1o7FV8yjVK1c'},
+      {wp:'Faca', nm:"Nomad | Forest DDPAT", en:"\u2605 Nomad Knife | Forest DDPAT (Field-Tested)", w:'FT', usd:87.11, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1U-uaqZ6t_H_iKMWOU0e9ij-pnRi-2qhAitzSQl8GueX7CZgUhC5FzQeEMu0Wxk4HmZevqswCMioNBzyutjytN7Stt4LkCT-N7rRKkR48c'},
+      {wp:'Faca', nm:"Flip | Forest DDPAT", en:"\u2605 Flip Knife | Forest DDPAT (Field-Tested)", w:'FT', usd:121.09, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1d4_u-V6x0H_SXHmaE_uV4uedscCS2kRQyvnPdnIqsJX2UawMhDZF5EeICtRm-ltGzY-2w4lbaiYsUnCj2hyhA7C5o_a9cBjas9MV1'},
+      {wp:'Faca', nm:"Skeleton | Forest DDPAT", en:"\u2605 Skeleton Knife | Forest DDPAT (Field-Tested)", w:'FT', usd:124.04, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1I5PeibbBiLs-bF1iUxf53pN5iQSC1kCIqtjmMj4K3dH_DOAZ0DJt2Q7VZsRi7l9G0Yb_mtQHfiYgTziishi9L63444egFUb1lpPNvvNnfcg'},
+      {wp:'Faca', nm:"Stiletto | Forest DDPAT", en:"\u2605 Stiletto Knife | Forest DDPAT (Field-Tested)", w:'FT', usd:141.57, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1I-_uibbB5L8-bF1iUxf53pN5iQSC1kCIqtjmMj4K3cXmRbwchC5QmELILt0G_m4KzN-Lk7geNjIoUn3qoiS8fuyc_4eYKAr1lpPMN1goMSA'},
+      {wp:'Faca', nm:"Baioneta | Forest DDPAT", en:"\u2605 Bayonet | Forest DDPAT (Field-Tested)", w:'FT', usd:147.36, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLzn4_v8ydP0Pq3V6BpMPGHMWyeyOhzj-xsSyCmmFMi523Tm92sJ3iQOwR1X5Z0TbQJ40Hum9WxNevq4AbeiN9Cnir2iCxI8G81tOHPxEiS'},
+      {wp:'Faca', nm:"Talon | Forest DDPAT", en:"\u2605 Talon Knife | Forest DDPAT (Field-Tested)", w:'FT', usd:230.00, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1M5vahf6lsK_WBMW-J_upyoOB9cCK9nBsijDCAnobsLGXFawcnA8ZxE7FbuxDsltTkMb6w4ATciY1GzS78hi5J6Sw-4e5QVKMk5OSJ2P35hE4O'},
+      {wp:'Faca', nm:"M9 Bayonet | Forest DDPAT", en:"\u2605 M9 Bayonet | Forest DDPAT (Field-Tested)", w:'FT', usd:345.00, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1Wts2sab1iLvWHMW-J_upyoOB9cCK9nBsijDCAnobsLGWTawcjW5pxQLQP50W_wN2xP7mxsgDdjIxNnH7-3XhK53lt5bwFAPFz5OSJ2DeMHnTT'},
+      {wp:'Faca', nm:"Karambit | Forest DDPAT", en:"\u2605 Karambit | Forest DDPAT (Field-Tested)", w:'FT', usd:478.40, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1Q7uCvZaZkNM-bF1iUxf53pN5kSi26gBBptTzdm9iteCiTbAMgCJciFuFctBDql4G0Ye-27gLXg41BznishyxJvDErvbi5HgrRGQ'},
+      {wp:'Faca', nm:"Butterfly | Safari Mesh", en:"\u2605 Butterfly Knife | Safari Mesh (Field-Tested)", w:'FT', usd:496.42, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1Z-ua6bbZrLOmsHXevzOtluN59TieMmBgjuiiI1Negd3-TaFUhWZciELEJtxS8kdznPr7m5ACMg40XniqsiC5I63posrocEf1ybD3MrwU'},
+      {wp:'Faca', nm:"Butterfly | Forest DDPAT", en:"\u2605 Butterfly Knife | Forest DDPAT (Field-Tested)", w:'FT', usd:519.16, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1Z-ua6bbZrLOmsBn6vxepmsfVWRCe6kxgYvjiBk5r0by7DPQUmC8d5EOQPsRPqmtOxMOzrtADW2ooTniT63CxN7idp4-gBVKo7uvqAMnRKx_E'}
+    ],
     desc:'Verde-oliva, cáqui e camuflado militar. Clima de mata fechada, com a faca de animação mais famosa do jogo.',
     faca:{wp:'Faca', nm:'Canivete Borboleta | Safari Mesh', en:'★ Butterfly Knife | Safari Mesh (Field-Tested)', w:'FT', brl:2844.68,
       img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1Z-ua6bbZrLOmsHXevzOtluN59TieMmBgjuiiI1Negd3-TaFUhWZciELEJtxS8kdznPr7m5ACMg40XniqsiC5I63posrocEf1ybD3MrwU'},
@@ -216,7 +259,19 @@ const KITS = {
   },
   crimson:{
     nome:'Kit Crimson', quem:'Kit 3 · Vermelho e preto', cor:'#ff5a52',
-    desc:'Vermelho carmesim com teia preta. A faca e a Deagle têm o mesmo padrão Crimson Web, e AK e AWP Redline fecham o visual.',
+    facas:[
+      {wp:'Faca', nm:"Paracord | Crimson Web", en:"\u2605 Paracord Knife | Crimson Web (Field-Tested)", w:'FT', usd:104.54, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1Y4OCqV6x0H-eWDHSvyuB_tuRWQiy3nAgq_WqGzIqgd3yeaAUhCJRyQLENsxe7wd21MOjntAeI2I9EmXr7i34f6ix1o7FVKuL27GI'},
+      {wp:'Faca', nm:"Ursus | Crimson Web", en:"\u2605 Ursus Knife | Crimson Web (Field-Tested)", w:'FT', usd:148.84, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1O_eG7e5tlOc-EC2WD_uV4uedscCS2kRQyvnPQz4v6cXOWOgdzXJV2EOBf5hSxwNHvMu6ztASPj48Uz32s3Cwd7y5t_a9cBg-sIxwj'},
+      {wp:'Faca', nm:"Classic | Crimson Web", en:"\u2605 Classic Knife | Crimson Web (Field-Tested)", w:'FT', usd:153.56, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1Y_OGRYL1SN_WRHVibz-dwtd5kSi26gBBp6mqEmd2peHiROAZ0CJUjFuFe50W_mtDuYeLr5lDajdgRxHj6iX5K5zErvbgUzv7Tow'},
+      {wp:'Faca', nm:"Nomad | Crimson Web", en:"\u2605 Nomad Knife | Crimson Web (Field-Tested)", w:'FT', usd:189.75, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1U-uaqZ6t_H_iKMXCVw_1JveRtRjy-20pw5TvXydirInOUawdyWcRwEbRethCxwdDuZurk5wWKiIlFyyj5hixXrnE8nU2__vY'},
+      {wp:'Faca', nm:"Flip | Crimson Web", en:"\u2605 Flip Knife | Crimson Web (Field-Tested)", w:'FT', usd:211.00, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1d4_u-V6x0H-eWDHSvzOtyufRkAXHql00htW-HmI74dHOXbwYjDZRyEe8Otxi-kd3uML-x5lePj4tByCXgznQeMkpcPIM'},
+      {wp:'Faca', nm:"Baioneta | Crimson Web", en:"\u2605 Bayonet | Crimson Web (Field-Tested)", w:'FT', usd:232.60, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLzn4_v8ydP0Pq3V7NoIuOsBWmZx-tJveRtRjy-2xhz5G7Qn9b4IHnGaw91WcYlQeFb4RfqwdHgY-nh4AXXgo5NzX6thiNXrnE8df7zclA'},
+      {wp:'Faca', nm:"Stiletto | Crimson Web", en:"\u2605 Stiletto Knife | Crimson Web (Field-Tested)", w:'FT', usd:302.50, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1I-_uibbB5L8-bF1iHxOxlj-pnRi-2qhAitzSQl8GvJXKeZ1d2D5Z4EeZf50Xul4bvP-m07lfYjd0Rynj5ii8Y7X045LwFT-N7rQeaIp7u'},
+      {wp:'Faca', nm:"Skeleton | Crimson Web", en:"\u2605 Skeleton Knife | Crimson Web (Field-Tested)", w:'FT', usd:305.99, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1I5PeibbBiLs-bF1iHxOxlj-xsSyCmmFN1sWyDz9mgeS_Ba1ImDMF4QuQOs0Xpm4LgNuy25Q2KgowXm3n_iitB8G81tCAAPTsb'},
+      {wp:'Faca', nm:"Talon | Crimson Web", en:"\u2605 Talon Knife | Crimson Web (Field-Tested)", w:'FT', usd:441.65, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1M5vahf6lsK_WBMW-J_vlzsvJWRCe6kxgYvjiBk5r0by6ROgYlCpUkQeFZ4EK_wNG1ZOvhtQWLjYNMzC-vjStBu3w-teZWVaI7uvqAY0bx0tQ'},
+      {wp:'Faca', nm:"M9 Bayonet | Crimson Web", en:"\u2605 M9 Bayonet | Crimson Web (Field-Tested)", w:'FT', usd:563.00, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1Wts2sab1iLvWHMW-J_vlzsvJWRCe6kxgYvjiBk5r0by7EPwQlXMElQuZftxi6wdfkMuzn5A2KjIIUmy2sii9I5y5u5ugCWPY7uvqAWN1nCz8'}
+    ],
+    desc:'Vermelho carmesim com teia preta. A faca e a Deagle têm o mesmo padrão Crimson Web, e AK e AWP Redline fecham o visual. ',
     faca:{wp:'Faca', nm:'Stiletto | Crimson Web', en:'★ Stiletto Knife | Crimson Web (Field-Tested)', w:'FT', usd:302.50,
       img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1I-_uibbB5L8-bF1iHxOxlj-pnRi-2qhAitzSQl8GvJXKeZ1d2D5Z4EeZf50Xul4bvP-m07lfYjd0Rynj5ii8Y7X045LwFT-N7rQeaIp7u'},
     luva:{wp:'Luvas', nm:'Luvas Broken Fang | Unhinged', en:'★ Broken Fang Gloves | Unhinged (Field-Tested)', w:'FT', usd:59.00,
@@ -238,6 +293,19 @@ const KITS = {
   },
   ice:{
     nome:'Kit Ice', quem:'Kit 4 · Azul gelo', cor:'#4fd1ff',
+    facas:[
+      {wp:'Faca', nm:"Paracord | Blue Steel", en:"\u2605 Paracord Knife | Blue Steel (Field-Tested)", w:'FT', usd:87.82, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1Y4OCqV6V8H_KfG2KU_uV4uedscCS2kRQyvnPTnI74cnySblAmApd2EbMOuxW6w4flYeLj41HW3d5FySWt3ygbu35v_a9cBpFnyT8I'},
+      {wp:'Faca', nm:"Ursus | Blue Steel", en:"\u2605 Ursus Knife | Blue Steel (Field-Tested)", w:'FT', usd:104.94, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1O_eG7e5tsMc-RAnKVxdF9vuhvSha-kBkupjDLzImtdXzEZgchA5ckFuAM50W_xNSzM7jrtgCKiN1GxC_2intBuHto6_FCD_QspsSflg'},
+      {wp:'Faca', nm:"Classic | Blue Steel", en:"\u2605 Classic Knife | Blue Steel (Field-Tested)", w:'FT', usd:142.00, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1Y_OGRabVSIvyGC2OvyuB_tuRWQiy3nAgq_WnVzYv6cy6VbwEnA5BwTeBZsBK_l921MLyx4VPf2INEziz_h3tKv311o7FVIyl-x_Y'},
+      {wp:'Faca', nm:"Nomad | Blue Steel", en:"\u2605 Nomad Knife | Blue Steel (Field-Tested)", w:'FT', usd:169.40, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1U-uaqZ6t_H_GCMWWc1Otyj-xsSyCmmFN1423WyNn4J3yVPwd2D8FzRLVYuhjtx9TjP7zjsVGI2d8UzH3-3S5K8G81tJId9KDw'},
+      {wp:'Faca', nm:"Baioneta | Bright Water", en:"\u2605 Bayonet | Bright Water (Field-Tested)", w:'FT', usd:190.18, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLzn4_v8ydP0Pq3V6tuJfGdMWyeyOhzj-xsSyCmmFNx4m6Ewo6tICifZwEkDpIiTeZesRbtlN3uYujhtFHbg9kUzH772C0b8G81tKj0NL1S'},
+      {wp:'Faca', nm:"Flip | Blue Steel", en:"\u2605 Flip Knife | Blue Steel (Field-Tested)", w:'FT', usd:203.98, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1d4_u-V6V8H_KfG2KU_uNztOh8QmfixkUl5G_cno2seHORbwdyD5dwE-AIsUaxk4DkM7vl4g2LiIgXxSz7kGoXualjL24Z'},
+      {wp:'Faca', nm:"Skeleton | Blue Steel", en:"\u2605 Skeleton Knife | Blue Steel (Field-Tested)", w:'FT', usd:249.35, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1I5PeibbBiLs-SH1iSzftztN5iQSC1kCIqtjmMj4K3IC6UZgZ2XpMhROQKtEG5wdazMLnqs1ba3YIQnCv2jH9J5y1usegKA71lpPPtszLK4A'},
+      {wp:'Faca', nm:"Stiletto | Blue Steel", en:"\u2605 Stiletto Knife | Blue Steel (Field-Tested)", w:'FT', usd:278.00, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1I-_uibbB5L8-SH1iSzftztN5iQSC1kCIqtjmMj4K3cnKVaQAoWMN2FuUC5Bi4wdy1NOzj7wHb2t1HyCz72n5I6y1u4LpXVb1lpPNYErhKWg'},
+      {wp:'Faca', nm:"M9 Bayonet | Bright Water", en:"\u2605 M9 Bayonet | Bright Water (Field-Tested)", w:'FT', usd:418.27, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1Wts2sab1iLvWHMW-J_uF1teBncCK9nBsijGTVpYL8JSLSMxhzDMYhTLUD4Re6ktTkMbvh5AyI394UmSv9hiJK63k_4O8CVaMm__eFkUifZn6YDkD1'},
+      {wp:'Faca', nm:"Talon | Blue Steel", en:"\u2605 Talon Knife | Blue Steel (Field-Tested)", w:'FT', usd:489.72, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1M5vahf6lsK_WBMWaB_ux6peRtcCS2kRQyvnPWzdaveSrFbg52Dcd4ROFb5EK-k9PjZOPjslONj94WzSz4hn5P7Cg5_a9cBkcQNT-g'},
+      {wp:'Faca', nm:"Karambit | Bright Water", en:"\u2605 Karambit | Bright Water (Field-Tested)", w:'FT', usd:542.69, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1Q7uCvZaZkNM-bF1ifwut3vt5iQSC1kCIqtjmMj4K3eH6QZ1MpD8B2QOUM5xS-k9K2Zrjm5VSI2YtHzCithihPvX094edQBL1lpPOhQMYzIg'}
+    ],
     desc:'Azul-água e ciano. A M9 Bayonet é uma das facas mais desejadas do jogo, e a M4 usa a mesma camuflagem dela.',
     faca:{wp:'Faca', nm:'Baioneta M9 | Bright Water', en:'★ M9 Bayonet | Bright Water (Field-Tested)', w:'FT', usd:418.27,
       img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1Wts2sab1iLvWHMW-J_uF1teBncCK9nBsijGTVpYL8JSLSMxhzDMYhTLUD4Re6ktTkMbvh5AyI394UmSv9hiJK63k_4O8CVaMm__eFkUifZn6YDkD1'},
@@ -260,6 +328,18 @@ const KITS = {
   },
   gold:{
     nome:'Kit Pharaoh', quem:'Kit 5 · Dourado e preto', cor:'#f2c14e',
+    facas:[
+      {wp:'Faca', nm:"Paracord | Case Hardened", en:"\u2605 Paracord Knife | Case Hardened (Field-Tested)", w:'FT', usd:94.38, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1Y4OCqV6V8H_-aAmKU_uV4uedscCS2kRQyvnPXzI37dC6UbAciDMN1TeINtkOxlobgPuvnswDb39pAyS3_3S8fvS5r_a9cBvtpts1f'},
+      {wp:'Faca', nm:"Ursus | Case Hardened", en:"\u2605 Ursus Knife | Case Hardened (Field-Tested)", w:'FT', usd:124.00, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1O_eG7e5tsMc-cB2uVxdF7teVgWiT9wBl2tWjWwtesJ3vBbg9yDMF5E-ZcuhO9xtfiML7l71Hd34JHm36shzQJsHjd8NGo_Q'},
+      {wp:'Faca', nm:"Classic | Case Hardened", en:"\u2605 Classic Knife | Case Hardened (Field-Tested)", w:'FT', usd:136.47, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1Y_OGRabVSL_mfC2OvyuB_tuRWQiy3nAgq_W2Gm4uveXuROldxXpRwF-QN4UTsl9LlZe7qtAPY2IxMxHr53CMf7y11o7FVFQrrLCo'},
+      {wp:'Faca', nm:"Flip | Lore", en:"\u2605 Flip Knife | Lore (Field-Tested)", w:'FT', usd:171.00, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1d4_u-V6d4H_afB3evzeFktd5kSi26gBBp42nXm9yucC_GZwIlAsR3F7Fe5hjsx4bhMrvq51TW2Y4XzHqrhytPvzErvbiZSdI2ug'},
+      {wp:'Faca', nm:"Nomad | Case Hardened", en:"\u2605 Nomad Knife | Case Hardened (Field-Tested)", w:'FT', usd:172.11, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1U-uaqZ6t_H_GCMWiZzetyj-pnRi-2qhAitzSQl8H_JC-fOwIgWJEhR-EC5BK9w9TlNOvj4QHWjoIUzHmv3SgY7ClqtekDT-N7rZEwR0mE'},
+      {wp:'Faca', nm:"Baioneta | Lore", en:"\u2605 Bayonet | Lore (Field-Tested)", w:'FT', usd:272.93, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLzn4_v8ydP0PG7V6ZsOf-dC3OvzeFktd5kSi26gBBp5D-AzNaqIHLBa1MpWcMjR-AI4EOxkt2xYuvk5Q2L2tkTnHqt3SlK5zErvbhU-sE7AQ'},
+      {wp:'Faca', nm:"Skeleton | Case Hardened", en:"\u2605 Skeleton Knife | Case Hardened (Field-Tested)", w:'FT', usd:285.00, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1I5PeibbBiLs-SH1ifyOJztN5iQSC1kCIqtjmMj4K3J3ufZlJyW5ZzEeIKtxC-kIKzN-_rslfejd1CzCj93C1P6yht4eZUWL1lpPOPJ1F8sQ'},
+      {wp:'Faca', nm:"Stiletto | Case Hardened", en:"\u2605 Stiletto Knife | Case Hardened (Field-Tested)", w:'FT', usd:329.73, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1I-_uibbB5L8-SH1ifyOJztN5iQSC1kCIqtjmMj4K3dC2WblIiDJd0F7VZt0O6xIflYr7ktAbZjthAn3j62yoYui9v6rsBBL1lpPMXVaVDyA'},
+      {wp:'Faca', nm:"Talon | Case Hardened", en:"\u2605 Talon Knife | Case Hardened (Field-Tested)", w:'FT', usd:520.00, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1M5vahf6lsK_WBMWaB_uF_vORtcCK9nBsijDCAnobsLGWTOgVyX5twQuMIt0PqkNzjPunktgLdiN4RmyT83S5J6Hpo6-0BWPIh5OSJ2Pl5dj8N'},
+      {wp:'Faca', nm:"M9 Bayonet | Lore", en:"\u2605 M9 Bayonet | Lore (Field-Tested)", w:'FT', usd:539.20, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1Wts2sab1iLvWHMWSF_uMvj-NoVha_mg8ijDCAnobsLGWebgVzA5EjQrMJ40G9xIHhMu_j4wOM2oJMnCuq2nlN73w54OdRVqoj5OSJ2HZV8Guh'}
+    ],
     desc:'Ouro sobre preto, com clima egípcio. A Baioneta Lore tem a lâmina dourada gravada com runas.',
     faca:{wp:'Faca', nm:'Baioneta | Lore', en:'★ Bayonet | Lore (Field-Tested)', w:'FT', usd:272.93,
       img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLzn4_v8ydP0PG7V6ZsOf-dC3OvzeFktd5kSi26gBBp5D-AzNaqIHLBa1MpWcMjR-AI4EOxkt2xYuvk5Q2L2tkTnHqt3SlK5zErvbhU-sE7AQ'},
@@ -282,6 +362,15 @@ const KITS = {
   },
   neon:{
     nome:'Kit Neon', quem:'Kit 6 · Roxo e rosa', cor:'#e070ff',
+    facas:[
+      {wp:'Faca', nm:"Paracord | Doppler", en:"\u2605 Paracord Knife | Doppler (Factory New)", w:'FN', usd:228.55, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1Y4OCqV6VgH_ScHnecxPxJoOloXCziqhEutDWR1Nv6JHuXbQUpCpIkQe8KsBjsxNLgYevltlTe3olHyHiv3StK73pqtugcEf1yeFJGil8'},
+      {wp:'Faca', nm:"Ursus | Doppler", en:"\u2605 Ursus Knife | Doppler (Factory New)", w:'FN', usd:264.39, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1O_eG7e5tsLc-XAXeAzetkj_FhTjq2xiIrujqNjsH8dSrDOgZxCsdwQbIKshHqlYa2Y-i35wzW2ItEn3mtjysdvS9s4ekET-N7rUzmvdlV'},
+      {wp:'Faca', nm:"Huntsman | Doppler", en:"\u2605 Huntsman Knife | Doppler (Factory New)", w:'FN', usd:291.07, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1P7vG6YadsLM-SA1iUzv5mvOR7cDm7lA4i4AKJk4jxNWWROAEmX5omROIPskTtmobkZrvjtgzajIwRmSn723xK6Shr4LpXV6Yh5OSJ2Po9oSed'},
+      {wp:'Faca', nm:"Flip | Doppler", en:"\u2605 Flip Knife | Doppler (Factory New)", w:'FN', usd:323.07, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1d4_u-V6VgH_ScHnecxPxJoOloXCzgqhEutDWR1N79dy2RbgUhCZZ4Q-ALukS4m9PlNbi25wLfjo5GnyT7jSNJ7Cc4suYcEf1yV0vEDxY'},
+      {wp:'Faca', nm:"Nomad | Doppler", en:"\u2605 Nomad Knife | Doppler (Factory New)", w:'FN', usd:412.67, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1U-uaqZ6t_H_GeMWOf0f56tfNWXyGyhhh1jDGMnYftby6SPAV2X8N3Q7NcsEa_lNezMuPq5wzY2IpHmHn6j3tNvytq5OhXBaY7uvqAC7ut2F0'},
+      {wp:'Faca', nm:"Baioneta | Doppler", en:"\u2605 Bayonet | Doppler (Factory New)", w:'FN', usd:446.86, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLzn4_v8ydP0POjV6BiMOCfC3Wv0eZ3o-Q6cCW6khUz_T_TydyheXmVZwYoXpR5R-YIsRe6lIazP-7h4Qzbj4hEzSyq3HgY7ix1o7FVS1Hc8lA'},
+      {wp:'Faca', nm:"Stiletto | Doppler", en:"\u2605 Stiletto Knife | Doppler (Factory New)", w:'FN', usd:575.00, img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1I-_uibbB5L8-SA1iUzv5mvOR7cDm7lA4i4QKJk4jxNWWRblMkAsRwELJf4RK8kNDlZbuxtFDX3o5EyC_7h3sb6XxrsO0GAvEh5OSJ2JbXapRd'}
+    ],
     desc:'Roxo, rosa e magenta em clima synthwave. A faca Doppler Nova de Fábrica brilha em tons metálicos de roxo e rosa.',
     faca:{wp:'Faca', nm:'Faca do Caçador | Doppler', en:'★ Huntsman Knife | Doppler (Factory New)', w:'FN', usd:291.07,
       img:'i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL6kJ_m-B1P7vG6YadsLM-SA1iUzv5mvOR7cDm7lA4i4AKJk4jxNWWROAEmX5omROIPskTtmobkZrvjtgzajIwRmSn723xK6Shr4LpXV6Yh5OSJ2Po9oSed'},
@@ -343,15 +432,23 @@ function render(k){
       <div class="total"><div class="v">${brl(total)}</div><div class="s">total na Steam</div></div>
     </div>
     <div class="combo"><div class="combo-grid">${combo(K.faca)}${combo(K.luva)}</div></div>
+    ${K.facas ? `<div class="picker"><div class="section-label" style="margin-top:20px"><h3>Troque a faca</h3><span>${K.facas.length} opções · arraste →</span></div>
+      <div class="knives" role="group" aria-label="Opções de faca">${K.facas.map((f,i)=>{const [mod,fin]=f.nm.split(' | ');return `<button class="kopt" data-i="${i}" aria-pressed="${f.en===K.faca.en}">${imgBox(f)}<b>${mod}</b><small>${fin} · ${f.w}</small><span>${brl(priceOf(f))}</span><em>kit ${brl(total-priceOf(K.faca)+priceOf(f))}</em></button>`}).join('')}</div></div>` : ''}
     <div class="section-label"><h3>Armas principais</h3><span>6 skins</span></div>
     <div class="list">${items}</div>
     <div class="summary"><table>${rows}<tr class="tot"><td>Total do kit</td><td>${brl(total)}</td></tr></table></div>
   </section>`;
+  const strip=document.querySelector('.knives'), sel=strip&&strip.querySelector('[aria-pressed="true"]');
+  if(strip&&sel){ strip.scrollLeft = sel.offsetLeft - strip.offsetLeft - 16; }
+  document.querySelectorAll('.kopt').forEach(b=>b.addEventListener('click',()=>{
+    const y = window.scrollY, sx = strip.scrollLeft; K.faca = K.facas[+b.dataset.i]; render(k); window.scrollTo(0,y); const ns=document.querySelector('.knives'); if(ns) ns.scrollLeft = sx;
+    const tt = document.querySelector(`#tab-${k} span`); if(tt) tt.textContent = '≈ '+brl(kitTotal(K));
+  }));
   document.body.dataset.kit = k;
   document.body.style.setProperty('--accent', K.cor);
   document.querySelectorAll('.tab').forEach(t=>t.setAttribute('aria-selected', t.dataset.k===k));
 }
-const kitTotal = K => [K.faca,K.luva,...K.armas].reduce((s,it)=>s+priceOf(it),0);
+var kitTotal = K => [K.faca,K.luva,...K.armas].reduce((s,it)=>s+priceOf(it),0);
 document.querySelector('.tabs-inner').innerHTML = Object.entries(KITS).map(([k,K])=>
   `<button class="tab" role="tab" id="tab-${k}" data-k="${k}" style="--dot:${K.cor}"><i></i><b>${K.nome.replace('Kit ','').toUpperCase()}</b><span>≈ ${brl(kitTotal(K))}</span></button>`).join('');
 document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{ render(t.dataset.k); try{history.replaceState(null,'','#'+t.dataset.k)}catch(e){} window.scrollTo({top:document.querySelector('.tabs').offsetTop,behavior:'smooth'}); }));
